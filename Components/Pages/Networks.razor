@@ -1,0 +1,34 @@
+@page "/networks"
+@using Docker.DotNet.Models
+
+<PageTitle>Networks</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="Networks" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0"/>
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenButton Icon="add_circle_outline" Text="Create" Variant="Variant.Flat"/>
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" aria-label="Search by all string columns" />
+    <RadzenRow>
+        <RadzenColumn>
+            <RadzenDataGrid TItem="NetworkResponse" Data="@NetworkResponses">
+                <Columns>
+                    <RadzenDataGridColumn TItem="NetworkResponse" Property="ID" Title="ID"></RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="NetworkResponse" Property="Name" Title="Name"></RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="NetworkResponse" Property="Driver" Title="Driver"></RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="NetworkResponse" Property="Created" Title="Created"></RadzenDataGridColumn>
+                    @* <RadzenDataGridColumn TItem="NetworkResponse" Property="RepoTags" Title="RepoTags"> *@
+                    @*     <Template> *@
+                    @*         @context.ID *@
+                    @*     </Template> *@
+                    @* </RadzenDataGridColumn> *@
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenColumn>
+    </RadzenRow>
+</RadzenStack>

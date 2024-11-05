@@ -1,0 +1,69 @@
+@inherits LayoutComponentBase
+@inject CookieThemeService CookieThemeService
+<RadzenComponents />
+
+<RadzenLayout style="grid-template-areas: 'rz-sidebar rz-header' 'rz-sidebar rz-body';">
+    <RadzenHeader>
+        <RadzenRow JustifyContent="JustifyContent.Start" AlignItems="AlignItems.Center" Gap="0">
+            <RadzenColumn Size="5">
+                <RadzenStack Orientation="Radzen.Orientation.Horizontal" AlignItems="Radzen.AlignItems.Center">
+                    <RadzenSidebarToggle Click="@SidebarToggleClick"></RadzenSidebarToggle>
+                    <RadzenLabel Text="Nodes" Component="Nodes" class="rz-mr-2" />
+                    <RadzenDropDown TValue="long" ValueProperty="Id" TextProperty="Name" Data="@_nodes" Name="Nodes" Placeholder="Select Node" @bind-Value="@_selectedNodeId" SelectedItemChanged="@NodesSelectedItemChanged" AllowClear="true">
+                        <Template>
+                            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="0.5rem">
+                                <RadzenText class="rz-mb-0" Text="@(context.Name)"/>
+                                <RadzenIcon Icon="check_circle" IconColor="var(--rz-success)"></RadzenIcon>
+                            </RadzenStack>
+                        </Template>
+                    </RadzenDropDown>
+                </RadzenStack>
+            </RadzenColumn>
+            <RadzenColumn Size="7">
+                <RadzenStack AlignItems="AlignItems.Center" Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" Gap="0.5rem" class="rz-px-2">
+                    <RadzenAppearanceToggle />
+                </RadzenStack>
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenHeader>
+    <RadzenBody Expanded="@sidebarExpanded">
+        <RadzenRow class="rz-mx-auto rz-px-4 rz-pt-2 rz-pt-md-4 rz-pt-lg-6 rz-pt-xl-12 rz-pb-2 rz-pb-lg-12" Style="max-width: 1440px;">
+            <RadzenColumn Size="12">
+
+                <CascadingValue Value="_nodeSelectionChanged">
+                <CascadingValue Value="_selectedNode">
+                    @Body
+                </CascadingValue>
+                </CascadingValue>
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenBody>
+    <RadzenSidebar @bind-Expanded="@sidebarExpanded" style="z-index: 2">
+        <RadzenStack AlignItems="Radzen.AlignItems.Center" class="rz-py-4 rz-py-lg-6 rz-px-3" Style="padding: var(--rz-panel-menu-item-padding); border-bottom: var(--rz-panel-menu-item-border);" Orientation="Radzen.Orientation.Horizontal" JustifyContent="Radzen.JustifyContent.Center">
+            <RadzenImage Path="images/container.png"  style="width: 48px; height: 48px;" AlternateText="Application logo"></RadzenImage>
+            <RadzenText Text="Container Management" TextStyle="Radzen.Blazor.TextStyle.H6" class="rz-mb-0" style="color: var(--rz-sidebar-color)" />
+        </RadzenStack>
+        <RadzenStack JustifyContent="JustifyContent.SpaceBetween" class="rz-m-2">
+            <RadzenFieldset Text="Node" Visible="@(_selectedNode != null)">
+                <RadzenPanelMenu>
+                    <RadzenPanelMenuItem Text="Home" Path="" Icon="home" />
+                    <RadzenPanelMenuItem Path="containers" Text="Containers" Icon="deployed_code"></RadzenPanelMenuItem>
+                    <RadzenPanelMenuItem Text="Images" Path="images" Icon="wallpaper_slideshow" />
+                    <RadzenPanelMenuItem Text="Networks" Path="networks" Icon="network_node" />
+                    <RadzenPanelMenuItem Text="Volumes" Path="volumes" Icon="home_storage" />
+                </RadzenPanelMenu>
+            </RadzenFieldset>
+            <RadzenFieldset Text="Infrastructure">
+                <RadzenPanelMenu>
+                    <RadzenPanelMenuItem Text="Nodes" Path="nodes" Icon="hub" />
+                </RadzenPanelMenu>
+            </RadzenFieldset>
+        </RadzenStack>
+    </RadzenSidebar>
+</RadzenLayout>
+<style>
+    .rz-fieldset-content {
+        padding: 0;
+        margin: 0;
+    }
+</style>

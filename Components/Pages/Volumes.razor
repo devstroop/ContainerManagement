@@ -1,0 +1,33 @@
+@page "/volumes"
+@using Docker.DotNet.Models
+
+<PageTitle>Volumes</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="Volumes" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0"/>
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenButton Icon="add_circle_outline" Text="Create" Variant="Variant.Flat"/>
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" aria-label="Search by all string columns" />
+    <RadzenRow>
+        <RadzenColumn>
+            <RadzenDataGrid TItem="VolumeResponse" Data="@VolumeResponses">
+                <Columns>
+                    <RadzenDataGridColumn TItem="VolumeResponse" Property="Name" Title="Name"></RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="VolumeResponse" Property="Driver" Title="Driver"></RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="VolumeResponse" Property="CreatedAt" Title="CreatedAt"></RadzenDataGridColumn>
+                    @* <RadzenDataGridColumn TItem="VolumeResponse" Property="RepoTags" Title="RepoTags"> *@
+                    @*     <Template> *@
+                    @*         @context.UsageData *@
+                    @*     </Template> *@
+                    @* </RadzenDataGridColumn> *@
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenColumn>
+    </RadzenRow>
+</RadzenStack>

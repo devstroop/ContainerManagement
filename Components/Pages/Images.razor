@@ -1,0 +1,38 @@
+@page "/images"
+@using Docker.DotNet.Models
+
+<PageTitle>Images</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="Images" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0"/>
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenButton Icon="add_circle_outline" Text="Create" Variant="Variant.Flat"/>
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" aria-label="Search by all string columns" />
+    <RadzenRow>
+        <RadzenColumn>
+            <RadzenDataGrid TItem="ImagesListResponse" Data="@ImagesListResponses">
+                <Columns>
+                    <RadzenDataGridColumn TItem="ImagesListResponse" Property="RepoTags" Title="RepoTags">
+                        <Template>
+                            @context.RepoTags.FirstOrDefault()
+                        </Template>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="ImagesListResponse" Property="ID" Title="ID"></RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="ImagesListResponse" Property="Size" Title="Size"></RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="ImagesListResponse" Property="Created" Title="Created"></RadzenDataGridColumn>
+                    @* <RadzenDataGridColumn TItem="ImagesListResponse" Property="RepoTags" Title="RepoTags"> *@
+                    @*     <Template> *@
+                    @*         @context.RepoTags.FirstOrDefault() *@
+                    @*     </Template> *@
+                    @* </RadzenDataGridColumn> *@
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenColumn>
+    </RadzenRow>
+</RadzenStack>

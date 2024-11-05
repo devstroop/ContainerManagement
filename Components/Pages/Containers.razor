@@ -1,0 +1,50 @@
+@page "/containers"
+@using Docker.DotNet.Models
+
+<PageTitle>Containers</PageTitle>
+<RadzenStack>
+    <RadzenRow AlignItems="AlignItems.Center">
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenText Text="Containers" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0"/>
+        </RadzenColumn>
+        <RadzenColumn Size="12" SizeMD="6">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                <RadzenButton Icon="add_circle_outline" Text="Create" Variant="Variant.Flat"/>
+            </RadzenStack>
+        </RadzenColumn>
+    </RadzenRow>
+    <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" aria-label="Search by all string columns" />
+    <RadzenRow>
+        <RadzenColumn>
+            <RadzenDataGrid TItem="ContainerListResponse" Data="@ContainerListResponses">
+                <Columns>
+                    <RadzenDataGridColumn TItem="ContainerListResponse" Property="ID" Title="ID" />
+                    <RadzenDataGridColumn TItem="ContainerListResponse" Property="Names" Title="Name">
+                        <Template>
+                            @context.Names.FirstOrDefault()
+                        </Template>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="ContainerListResponse" Property="Image" Title="Image" />
+                    <RadzenDataGridColumn TItem="ContainerListResponse" Property="Ports" Title="Ports">
+                        <Template>
+                            @foreach (var port in context.Ports)
+                            {
+                                <div>@port.PublicPort:@port.PrivatePort</div>
+                            }
+                        </Template>
+                    </RadzenDataGridColumn>
+                    <RadzenDataGridColumn TItem="ContainerListResponse" Property="State" Title="State" />
+                    <RadzenDataGridColumn TItem="ContainerListResponse" Property="Status" Title="Status" />
+                    <RadzenDataGridColumn TItem="ContainerListResponse" Property="Created" Title="Created" />
+                    <RadzenDataGridColumn TItem="ContainerListResponse">
+                        <Template>
+                            <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center">
+                                <RadzenButton Icon="delete" ButtonStyle="ButtonStyle.Danger" Size="ButtonSize.Medium" Variant="Variant.Flat"/>
+                            </RadzenStack>
+                        </Template>
+                    </RadzenDataGridColumn>
+                </Columns>
+            </RadzenDataGrid>
+        </RadzenColumn>
+    </RadzenRow>
+</RadzenStack>
