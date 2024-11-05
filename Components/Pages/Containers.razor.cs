@@ -23,11 +23,17 @@ public partial class Containers
     private IEnumerable<ContainerListResponse> ContainerListResponses { get; set; }
     
     private DockerClient _client;
-    protected override async Task OnInitializedAsync()
+
+    [Inject]
+    protected SecurityService Security { get; set; }
+    protected override async Task OnParametersSetAsync()
     {
         if (SelectedNode != null)
         {
             _client = new DockerClientConfiguration(new Uri(SelectedNode.DockerAPI)).CreateClient();
+            ContainerListResponses = await _client.Containers.ListContainersAsync(new ContainersListParameters());
+            await JSRuntime.InvokeVoidAsync("console.log", ContainerListResponses);
+            StateHasChanged();
         }
         else
         {
@@ -35,15 +41,6 @@ public partial class Containers
         }
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            ContainerListResponses = await _client.Containers.ListContainersAsync(new ContainersListParameters());
-            await JSRuntime.InvokeVoidAsync("console.log", ContainerListResponses);
-            StateHasChanged();
-        }
-    }
 
     private Task Search(ChangeEventArgs arg)
     {

@@ -1,7 +1,4 @@
-@page "/edit-environment"
-
-<PageTitle>Edit Environment</PageTitle>
-
+<PageTitle>Add Node</PageTitle>
     <RadzenColumn SizeMD=12>
         <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save Environment</RadzenAlert>
         <RadzenTemplateForm TItem="ContainerManagement.Models.Database.Node" Data="@node" Visible="@(node != null)" Submit="@FormSubmit">
@@ -20,7 +17,7 @@
                 </RadzenColumn>
                 <RadzenColumn SizeMD="9">
                     <RadzenTextBox style="display: block; width: 100%" @bind-Value="@node.DockerAPI" Name="DockerAPI" />
-                    <RadzenRequiredValidator Component="DockerAPI" Text="DockerAPI is required" />
+                    <RadzenRequiredValidator Component="DockerAPI" Text="Docker API is required" />
                 </RadzenColumn>
             </RadzenRow>
           <RadzenStack  Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">

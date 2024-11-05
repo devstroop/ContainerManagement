@@ -42,6 +42,9 @@ namespace ContainerManagement.Components.Layout
         private Models.Database.Node _selectedNode;
         private string _selectedNodeName;
 
+        [Inject]
+        protected SecurityService Security { get; set; }
+
         private void SidebarToggleClick()
         {
             sidebarExpanded = !sidebarExpanded;
@@ -74,6 +77,14 @@ namespace ContainerManagement.Components.Layout
                 });
             }
             StateHasChanged();
+        }
+
+        protected void ProfileMenuClick(RadzenProfileMenuItem args)
+        {
+            if (args.Value == "Logout")
+            {
+                Security.Logout();
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
 
-namespace ContainerManagement.Components.Pages.Infrastructure.Nodes
+namespace ContainerManagement.Components.Pages.Administration.Nodes
 {
     public partial class Nodes
     {

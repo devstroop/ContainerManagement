@@ -37,6 +37,9 @@ namespace ContainerManagement.Components.Pages
         private IEnumerable<VolumeResponse> VolumeResponses { get; set; }
     
         private DockerClient _client;
+
+        [Inject]
+        protected SecurityService Security { get; set; }
         protected override async Task OnParametersSetAsync()
         {
             if (SelectedNode != null)

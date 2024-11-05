@@ -44,6 +44,9 @@ namespace ContainerManagement.Components.Pages
         private int _totalVolumes = 0;
         private int _totalNetworks = 0;
         private int _totalStacks = 0;
+
+        [Inject]
+        protected SecurityService Security { get; set; }
         
         protected override async Task OnParametersSetAsync()
         {

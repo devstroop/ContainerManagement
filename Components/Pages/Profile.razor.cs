@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
 
-namespace ContainerManagement.Components.Pages.Infrastructure.Nodes
+namespace ContainerManagement.Components.Pages
 {
-    public partial class AddNode
+    public partial class Profile
     {
         [Inject]
         protected IJSRuntime JSRuntime { get; set; }
@@ -29,32 +29,35 @@ namespace ContainerManagement.Components.Pages.Infrastructure.Nodes
 
         [Inject]
         protected NotificationService NotificationService { get; set; }
+
+        protected string oldPassword = "";
+        protected string newPassword = "";
+        protected string confirmPassword = "";
+        protected ContainerManagement.Models.ApplicationUser user;
+        protected string error;
+        protected bool errorVisible;
+        protected bool successVisible;
+
         [Inject]
-        public DatabaseService DatabaseService { get; set; }
+        protected SecurityService Security { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            node = new ContainerManagement.Models.Database.Node();
+            user = await Security.GetUserById($"{Security.User.Id}");
         }
-        protected bool errorVisible;
-        protected ContainerManagement.Models.Database.Node node;
 
         protected async Task FormSubmit()
         {
             try
             {
-                await DatabaseService.CreateNode(node);
-                DialogService.Close(node);
+                await Security.ChangePassword(oldPassword, newPassword);
+                successVisible = true;
             }
             catch (Exception ex)
             {
                 errorVisible = true;
+                error = ex.Message;
             }
-        }
-
-        protected async Task CancelButtonClick(MouseEventArgs args)
-        {
-            DialogService.Close(null);
         }
     }
 }

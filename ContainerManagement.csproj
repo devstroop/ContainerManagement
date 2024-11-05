@@ -13,6 +13,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.2.3" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -22,5 +25,10 @@
     <Content Include="Data\database.sqlite">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="Components\Pages\Administration\Nodes\AddNode.razor" />
+    <AdditionalFiles Include="Components\Pages\Administration\Nodes\EditNode.razor" />
+    <AdditionalFiles Include="Components\Pages\Administration\Nodes\Nodes.razor" />
   </ItemGroup>
 </Project>
