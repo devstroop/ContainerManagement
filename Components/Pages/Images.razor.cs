@@ -35,7 +35,7 @@ namespace ContainerManagement.Components.Pages
         [CascadingParameter] public Models.Database.Node SelectedNode { get; set; }
         private  IEnumerable<ImagesListResponse> ImagesListResponses { get; set; }
         private DockerClient _client;
-        protected override async Task OnInitializedAsync()
+        protected override async Task OnParametersSetAsync()
         {
             if (SelectedNode != null)
             {

@@ -40,8 +40,7 @@ namespace ContainerManagement.Components.Layout
 
         private System.Linq.IQueryable<ContainerManagement.Models.Database.Node> _nodes;
         private Models.Database.Node _selectedNode;
-        private long _selectedNodeId;
-        private EventCallback<ContainerManagement.Models.Database.Node> _nodeSelectionChanged;
+        private string _selectedNodeName;
 
         private void SidebarToggleClick()
         {
@@ -58,7 +57,7 @@ namespace ContainerManagement.Components.Layout
             if (args != null)
             {
                 var node = args as ContainerManagement.Models.Database.Node;
-                _selectedNode = _nodes.FirstOrDefault(n => n.Id == node.Id);
+                _selectedNode = _nodes.FirstOrDefault(n => n.Name == node.Name);
                 NotificationService.Notify(new NotificationMessage()
                 {
                     Severity = NotificationSeverity.Info, Summary = "Node selected",
@@ -74,7 +73,6 @@ namespace ContainerManagement.Components.Layout
                     Detail = "Node deselected."
                 });
             }
-            await _nodeSelectionChanged.InvokeAsync(_selectedNode);
             StateHasChanged();
         }
     }

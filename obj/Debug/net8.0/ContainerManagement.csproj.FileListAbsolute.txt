@@ -127,3 +127,5 @@
 /Volumes/ADATA/GitHub/ContainerManagement/bin/Debug/net8.0/runtimes/win-arm64/native/e_sqlite3.dll
 /Volumes/ADATA/GitHub/ContainerManagement/bin/Debug/net8.0/runtimes/win-x64/native/e_sqlite3.dll
 /Volumes/ADATA/GitHub/ContainerManagement/bin/Debug/net8.0/runtimes/win-x86/native/e_sqlite3.dll
+/Volumes/ADATA/GitHub/ContainerManagement/obj/Debug/net8.0/ContainerManagement.sourcelink.json
+/Volumes/ADATA/GitHub/ContainerManagement/bin/Debug/net8.0/Data/database.sqlite

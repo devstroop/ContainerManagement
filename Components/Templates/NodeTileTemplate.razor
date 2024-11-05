@@ -1,0 +1,58 @@
+@using ContainerManagement.Components.Components
+@using ContainerManagement.Extensions
+@using Docker.DotNet
+@using Docker.DotNet.Models
+<RadzenRow AlignItems="AlignItems.Start">
+    <RadzenImage Style="width: 60px;" Path="images/docker.png"></RadzenImage>
+    <RadzenColumn>
+        <RadzenRow AlignItems="AlignItems.Center">
+            <RadzenText class="rz-mb-0" Text="@Node.Name" Style="font-weight: bold; "></RadzenText>
+            <RadzenText class="rz-mb-0" Text="@Node.DockerAPI" TextStyle="TextStyle.Caption"></RadzenText>
+        </RadzenRow>
+        <RadzenRow>
+            <RadzenColumn>
+                <AsyncBuilder TData="VersionResponse" Event="@(() => _client.GetVersion())">
+                    <LoadingTemplate>
+                        <RadzenText Text="Loading..."/>
+                    </LoadingTemplate>
+                    <SuccessContent Context="ctx">
+                        <RadzenRow>
+                            <RadzenColumn>
+                                <RadzenText Text="OS" TextStyle="TextStyle.Overline"></RadzenText>
+                                <RadzenText Text="@ctx.Os" class="rz-mb-0"/>
+                            </RadzenColumn>
+                            <RadzenColumn>
+                                <RadzenText Text="Arch" TextStyle="TextStyle.Overline"></RadzenText>
+                                <RadzenText Text="@ctx.Arch" class="rz-mb-0"/>
+                            </RadzenColumn>
+                            <RadzenColumn>
+                                <RadzenText Text="Version" TextStyle="TextStyle.Overline"></RadzenText>
+                                <RadzenText Text="@ctx.Version" class="rz-mb-0"/>
+                            </RadzenColumn>
+                            <RadzenColumn>
+                                <RadzenText Text="API Version" TextStyle="TextStyle.Overline"></RadzenText>
+                                <RadzenText Text="@($"{ctx.MinAPIVersion} <= {ctx.APIVersion}")" class="rz-mb-0"/>
+                            </RadzenColumn>
+                            <RadzenColumn>
+                                <RadzenText Text="Kernel" TextStyle="TextStyle.Overline"></RadzenText>
+                                <RadzenText Text="@ctx.KernelVersion" class="rz-mb-0"/>
+                            </RadzenColumn>
+                        </RadzenRow>
+                    </SuccessContent>
+                    <ErrorContent Context="err">
+                        <RadzenText Text="@err.Message"/>
+                    </ErrorContent>
+                </AsyncBuilder>
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenColumn>
+</RadzenRow>
+@code {
+    [Parameter] public Models.Database.Node Node { get; set; }
+    private DockerClient _client;
+    
+    protected override void OnInitialized()
+    {
+        _client = Node.CreateClient();
+    }
+}

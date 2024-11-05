@@ -22,20 +22,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Volumes/ADATA/GitHub/ContainerManagement/Components/Components/AsyncBuilder.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Db21wb25lbnRzL0FzeW5jQnVpbGRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Volumes/ADATA/GitHub/ContainerManagement/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/AddNode.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BZGROb2RlLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Containers.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Db250YWluZXJzLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/EditNode.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FZGl0Tm9kZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Images.razor]
@@ -46,12 +42,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9JbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Networks.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9OZXR3b3Jrcy5yYXpvcg==
+[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Infrastructure/Nodes/AddNode.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9JbmZyYXN0cnVjdHVyZS9Ob2Rlcy9BZGROb2RlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Nodes.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ob2Rlcy5yYXpvcg==
+[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Infrastructure/Nodes/EditNode.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9JbmZyYXN0cnVjdHVyZS9Ob2Rlcy9FZGl0Tm9kZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Infrastructure/Nodes/Nodes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9JbmZyYXN0cnVjdHVyZS9Ob2Rlcy9Ob2Rlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Networks.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9OZXR3b3Jrcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Volumes.razor]
@@ -60,6 +64,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Volumes/ADATA/GitHub/ContainerManagement/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/ADATA/GitHub/ContainerManagement/Components/Templates/NodeTileTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9UZW1wbGF0ZXMvTm9kZVRpbGVUZW1wbGF0ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Volumes/ADATA/GitHub/ContainerManagement/Components/_Imports.razor]

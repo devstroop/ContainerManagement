@@ -35,24 +35,18 @@ namespace ContainerManagement.Components.Pages
         [CascadingParameter] public Models.Database.Node SelectedNode { get; set; }
         private DockerClient _client;
         private  IEnumerable<NetworkResponse> NetworkResponses { get; set; }
-        protected override async Task OnInitializedAsync()
+        protected override async Task OnParametersSetAsync()
         {
             if (SelectedNode != null)
             {
                 _client = new DockerClientConfiguration(new Uri(SelectedNode.DockerAPI)).CreateClient();
+                NetworkResponses = await _client.Networks.ListNetworksAsync(new NetworksListParameters());
+                await JSRuntime.InvokeVoidAsync("console.log", NetworkResponses);
+                StateHasChanged();
             }
             else
             {
                 NotificationService.Notify(NotificationSeverity.Warning, "Warning", "Please select a node first.");
-            }
-        }
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                NetworkResponses = await _client.Networks.ListNetworksAsync(new NetworksListParameters());
-                await JSRuntime.InvokeVoidAsync("console.log", NetworkResponses);
-                StateHasChanged();
             }
         }
         

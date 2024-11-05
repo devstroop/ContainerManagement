@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
 
-namespace ContainerManagement.Components.Pages
+namespace ContainerManagement.Components.Pages.Infrastructure.Nodes
 {
     public partial class Nodes
     {
@@ -50,6 +50,7 @@ namespace ContainerManagement.Components.Pages
         protected override async Task OnInitializedAsync()
         {
             nodes = await DatabaseService.GetNodes(new Query { Filter = $@"i => i.Name.Contains(@0) || i.DockerAPI.Contains(@0)", FilterParameters = new object[] { search } });
+            nodes = await DatabaseService.GetNodes();
         }
 
         protected async Task AddButtonClick(MouseEventArgs args)
@@ -60,16 +61,16 @@ namespace ContainerManagement.Components.Pages
 
         protected async Task EditRow(ContainerManagement.Models.Database.Node args)
         {
-            await DialogService.OpenAsync<EditNode>("Edit Node", new Dictionary<string, object> { {"Id", args.Id} });
+            await DialogService.OpenAsync<EditNode>("Edit Node", new Dictionary<string, object> { {"Name", args.Name} });
         }
 
-        protected async Task GridDeleteButtonClick(MouseEventArgs args, ContainerManagement.Models.Database.Node environment)
+        protected async Task GridDeleteButtonClick(MouseEventArgs args, ContainerManagement.Models.Database.Node node)
         {
             try
             {
                 if (await DialogService.Confirm("Are you sure you want to delete this record?") == true)
                 {
-                    var deleteResult = await DatabaseService.DeleteNode(environment.Id);
+                    var deleteResult = await DatabaseService.DeleteNode(node.Name);
 
                     if (deleteResult != null)
                     {
@@ -86,11 +87,6 @@ namespace ContainerManagement.Components.Pages
                     Detail = $"Unable to delete Environment"
                 });
             }
-        }
-
-        private async Task GridConnectButtonClick(MouseEventArgs args, ContainerManagement.Models.Database.Node node)
-        {
-            NavigationManager.NavigateTo("containers");
         }
     }
 }

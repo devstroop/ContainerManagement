@@ -1,0 +1,65 @@
+@typeparam TData
+
+@if (_isLoading)
+{
+    @if (LoadingTemplate != null)
+    {
+        @LoadingTemplate
+    }
+    else
+    {
+        <p>Loading...</p>
+    }
+}
+else if (_exception != null)
+{
+    @if (ErrorContent != null)
+    {
+        @ErrorContent(_exception)
+    }
+    else
+    {
+        <p>Error: @_exception.Message</p>
+    }
+}
+else
+{
+    @if (SuccessContent != null)
+    {
+        @SuccessContent(_data)
+    }
+}
+
+@code {
+    [Parameter, EditorRequired]
+    public Func<Task<TData>> Event { get; set; }
+
+    [Parameter]
+    public RenderFragment LoadingTemplate { get; set; }
+
+    [Parameter]
+    public RenderFragment<TData> SuccessContent { get; set; }
+
+    [Parameter]
+    public RenderFragment<Exception> ErrorContent { get; set; }
+
+    private TData _data;
+    private bool _isLoading = true;
+    private Exception _exception;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _data = await Event.Invoke();
+        }
+        catch (Exception ex)
+        {
+            _exception = ex;
+        }
+        finally
+        {
+            _isLoading = false;
+        }
+    }
+}

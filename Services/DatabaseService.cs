@@ -105,17 +105,17 @@ namespace ContainerManagement
         }
 
         partial void OnNodeGet(ContainerManagement.Models.Database.Node item);
-        partial void OnGetNodeById(ref IQueryable<ContainerManagement.Models.Database.Node> items);
+        partial void OnGetNodeByName(ref IQueryable<ContainerManagement.Models.Database.Node> items);
 
 
-        public async Task<ContainerManagement.Models.Database.Node> GetNodeById(long id)
+        public async Task<ContainerManagement.Models.Database.Node> GetNodeByName(string name)
         {
             var items = Context.Nodes
                               .AsNoTracking()
-                              .Where(i => i.Id == id);
+                              .Where(i => i.Name == name);
 
  
-            OnGetNodeById(ref items);
+            OnGetNodeByName(ref items);
 
             var itemToReturn = items.FirstOrDefault();
 
@@ -132,7 +132,7 @@ namespace ContainerManagement
             OnNodeCreated(node);
 
             var existingItem = Context.Nodes
-                              .Where(i => i.Id == node.Id)
+                              .Where(i => i.Name == node.Name)
                               .FirstOrDefault();
 
             if (existingItem != null)
@@ -171,12 +171,12 @@ namespace ContainerManagement
         partial void OnNodeUpdated(ContainerManagement.Models.Database.Node item);
         partial void OnAfterNodeUpdated(ContainerManagement.Models.Database.Node item);
 
-        public async Task<ContainerManagement.Models.Database.Node> UpdateNode(long id, ContainerManagement.Models.Database.Node node)
+        public async Task<ContainerManagement.Models.Database.Node> UpdateNode(string name, ContainerManagement.Models.Database.Node node)
         {
             OnNodeUpdated(node);
 
             var itemToUpdate = Context.Nodes
-                              .Where(i => i.Id == node.Id)
+                              .Where(i => i.Name == node.Name)
                               .FirstOrDefault();
 
             if (itemToUpdate == null)
@@ -198,10 +198,10 @@ namespace ContainerManagement
         partial void OnNodeDeleted(ContainerManagement.Models.Database.Node item);
         partial void OnAfterNodeDeleted(ContainerManagement.Models.Database.Node item);
 
-        public async Task<ContainerManagement.Models.Database.Node> DeleteNode(long id)
+        public async Task<ContainerManagement.Models.Database.Node> DeleteNode(string name)
         {
             var itemToDelete = Context.Nodes
-                              .Where(i => i.Id == id)
+                              .Where(i => i.Name == name)
                               .FirstOrDefault();
 
             if (itemToDelete == null)

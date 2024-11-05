@@ -9,9 +9,6 @@ namespace ContainerManagement.Models.Database
     public partial class Node
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
-
         [Required]
         public string Name { get; set; }
 

@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
 
-namespace ContainerManagement.Components.Pages
+namespace ContainerManagement.Components.Pages.Infrastructure.Nodes
 {
-    public partial class AddNode
+    public partial class EditNode
     {
         [Inject]
         protected IJSRuntime JSRuntime { get; set; }
@@ -32,9 +32,12 @@ namespace ContainerManagement.Components.Pages
         [Inject]
         public DatabaseService DatabaseService { get; set; }
 
+        [Parameter]
+        public string Name { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
-            node = new ContainerManagement.Models.Database.Node();
+            node = await DatabaseService.GetNodeByName(Name);
         }
         protected bool errorVisible;
         protected ContainerManagement.Models.Database.Node node;
@@ -43,7 +46,7 @@ namespace ContainerManagement.Components.Pages
         {
             try
             {
-                await DatabaseService.CreateNode(node);
+                await DatabaseService.UpdateNode(Name, node);
                 DialogService.Close(node);
             }
             catch (Exception ex)

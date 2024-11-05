@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RnNb1MJkyWw1SEuDYsmY47WVb+AxbPrMTUYCvm7WVGU=",
+  "Hash": "jMm/nQeafUUADlPvoqdInwku/MWWtnBddUmxm5DbXNY=",
   "Source": "ContainerManagement",
   "BasePath": "_content/ContainerManagement",
   "Mode": "Default",
@@ -851,6 +851,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/container.png"
+    },
+    {
+      "Identity": "/Volumes/ADATA/GitHub/ContainerManagement/wwwroot/images/docker.png",
+      "SourceId": "ContainerManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Volumes/ADATA/GitHub/ContainerManagement/wwwroot/",
+      "BasePath": "_content/ContainerManagement",
+      "RelativePath": "images/docker.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/docker.png"
     },
     {
       "Identity": "/Volumes/ADATA/GitHub/ContainerManagement/wwwroot/images/login.jpg",

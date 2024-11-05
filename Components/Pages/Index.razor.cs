@@ -36,8 +36,7 @@ namespace ContainerManagement.Components.Pages
         
         
         [CascadingParameter] public Models.Database.Node SelectedNode { get; set; }
-        [CascadingParameter] public EventCallback<Models.Database.Node> NodeSelectionChange { get; set; }
-        
+
         private DockerClient _client;
         
         private int _totalContainers = 0;
@@ -46,25 +45,18 @@ namespace ContainerManagement.Components.Pages
         private int _totalNetworks = 0;
         private int _totalStacks = 0;
         
-        protected override async Task OnInitializedAsync()
+        protected override async Task OnParametersSetAsync()
         {
-            NodeSelectionChange = new EventCallback<Models.Database.Node>(this, async (dynamic node) =>
+            if (SelectedNode != null)
             {
-                SelectedNode = node;
+                // Handle the logic for when a node is selected
+                Console.WriteLine($"Selected Node: {SelectedNode.Name}");
                 await LoadData();
-            });
-            await LoadData();
-        }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
+            }
+            else
             {
-                await JSRuntime.InvokeVoidAsync("console.log", "Total Containers: " + _totalContainers);
-                await JSRuntime.InvokeVoidAsync("console.log", "Total Images: " + _totalImages);
-                await JSRuntime.InvokeVoidAsync("console.log", "Total Volumes: " + _totalVolumes);
-                await JSRuntime.InvokeVoidAsync("console.log", "Total Networks: " + _totalNetworks);
-                await JSRuntime.InvokeVoidAsync("console.log", "Total Stacks: " + _totalStacks);
+                // Handle the logic for when no node is selected
+                Console.WriteLine("No node selected.");
             }
         }
 

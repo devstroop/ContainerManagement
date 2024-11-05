@@ -37,11 +37,14 @@ namespace ContainerManagement.Components.Pages
         private IEnumerable<VolumeResponse> VolumeResponses { get; set; }
     
         private DockerClient _client;
-        protected override async Task OnInitializedAsync()
+        protected override async Task OnParametersSetAsync()
         {
             if (SelectedNode != null)
             {
                 _client = new DockerClientConfiguration(new Uri(SelectedNode.DockerAPI)).CreateClient();
+                VolumeResponses = (await _client.Volumes.ListAsync(new VolumesListParameters()))?.Volumes;
+                await JSRuntime.InvokeVoidAsync("console.log", VolumeResponses);
+                StateHasChanged();
             }
             else
             {
@@ -49,15 +52,6 @@ namespace ContainerManagement.Components.Pages
             }
         }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                VolumeResponses = (await _client.Volumes.ListAsync(new VolumesListParameters()))?.Volumes;
-                await JSRuntime.InvokeVoidAsync("console.log", VolumeResponses);
-                StateHasChanged();
-            }
-        }
         private Task Search(ChangeEventArgs arg)
         {
             throw new NotImplementedException();

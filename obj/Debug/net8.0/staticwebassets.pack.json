@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets/images/container.png"
     },
     {
+      "Id": "/Volumes/ADATA/GitHub/ContainerManagement/wwwroot/images/docker.png",
+      "PackagePath": "staticwebassets/images/docker.png"
+    },
+    {
       "Id": "/Volumes/ADATA/GitHub/ContainerManagement/wwwroot/images/login.jpg",
       "PackagePath": "staticwebassets/images/login.jpg"
     },
