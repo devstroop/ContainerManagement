@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
 
-namespace ContainerManagement.Components.Pages
+namespace ContainerManagement.Components.Pages.Node
 {
-    public partial class Networks
+    public partial class Images
     {
         [Inject]
         protected IJSRuntime JSRuntime { get; set; }
@@ -33,8 +33,8 @@ namespace ContainerManagement.Components.Pages
         protected NotificationService NotificationService { get; set; }
         
         [CascadingParameter] public Models.Database.Node SelectedNode { get; set; }
+        private  IEnumerable<ImagesListResponse> ImagesListResponses { get; set; }
         private DockerClient _client;
-        private  IEnumerable<NetworkResponse> NetworkResponses { get; set; }
 
         [Inject]
         protected SecurityService Security { get; set; }
@@ -43,13 +43,20 @@ namespace ContainerManagement.Components.Pages
             if (SelectedNode != null)
             {
                 _client = new DockerClientConfiguration(new Uri(SelectedNode.DockerAPI)).CreateClient();
-                NetworkResponses = await _client.Networks.ListNetworksAsync(new NetworksListParameters());
-                await JSRuntime.InvokeVoidAsync("console.log", NetworkResponses);
-                StateHasChanged();
             }
             else
             {
                 NotificationService.Notify(NotificationSeverity.Warning, "Warning", "Please select a node first.");
+            }
+        }
+        
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender)
+            {
+                ImagesListResponses = await _client.Images.ListImagesAsync(new ImagesListParameters());
+                await JSRuntime.InvokeVoidAsync("console.log", ImagesListResponses);
+                StateHasChanged();
             }
         }
         

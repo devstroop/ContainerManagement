@@ -80,20 +80,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BdXRoZW50aWNhdGlvbi9TZWN1cml0eUNvZGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Containers.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Db250YWluZXJzLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Images.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9JbWFnZXMucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9JbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Networks.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9OZXR3b3Jrcy5yYXpvcg==
+[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Node/Containers.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ob2RlL0NvbnRhaW5lcnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Node/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ob2RlL0Rhc2hib2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Node/Images.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ob2RlL0ltYWdlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Node/Networks.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ob2RlL05ldHdvcmtzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Node/Volumes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ob2RlL1ZvbHVtZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Profile.razor]
@@ -102,10 +110,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Unauthorized.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9VbmF1dGhvcml6ZWQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/Volumes.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Wb2x1bWVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Volumes/ADATA/GitHub/ContainerManagement/Components/Pages/_Imports.razor]

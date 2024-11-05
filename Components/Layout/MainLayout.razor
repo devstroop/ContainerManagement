@@ -26,14 +26,14 @@
                     <RadzenProfileMenu Visible="@Security.IsAuthenticated()" Click="@ProfileMenuClick">
                         <ChildContent>
 
-                            <RadzenProfileMenuItem Path="profile" Icon="settings" Text="Profile" />
-                            <RadzenProfileMenuItem Path="application-users" Icon="person" Text="Users" />
-                            <RadzenProfileMenuItem Path="application-roles" Icon="security" Text="Roles" />
-                            <RadzenProfileMenuItem Text="Logout" Value="Logout" Icon="power_settings_new" />
+                            <RadzenProfileMenuItem Path="profile" Icon="settings" Text="Profile"/>
+                            <RadzenProfileMenuItem Path="application-users" Icon="person" Text="Users"/>
+                            <RadzenProfileMenuItem Path="application-roles" Icon="security" Text="Roles"/>
+                            <RadzenProfileMenuItem Text="Logout" Value="Logout" Icon="power_settings_new"/>
                         </ChildContent>
                         <Template>
                             @Security.User?.Name
-                            <RadzenGravatar Email="@Security.User?.Name" />
+                            <RadzenGravatar Email="@Security.User?.Name"/>
                         </Template>
                     </RadzenProfileMenu>
                 </RadzenStack>
@@ -54,14 +54,17 @@
             <RadzenImage Path="images/container.png" style="width: 48px; height: 48px;" AlternateText="Application logo"></RadzenImage>
             <RadzenText Text="Container Management" TextStyle="Radzen.Blazor.TextStyle.H6" class="rz-mb-0" style="color: var(--rz-sidebar-color)"/>
         </RadzenStack>
-        <RadzenStack JustifyContent="JustifyContent.SpaceBetween" class="rz-m-2">
+        <RadzenStack class="rz-m-2">
+            <RadzenPanelMenu>
+                <RadzenPanelMenuItem Text="Home" Path="/" Icon="home"/>
+            </RadzenPanelMenu>
             <RadzenFieldset Text="Node" Visible="@(_selectedNode != null)">
                 <RadzenPanelMenu>
-                    <RadzenPanelMenuItem Text="Home" Path="" Icon="home"/>
-                    <RadzenPanelMenuItem Path="containers" Text="Containers" Icon="deployed_code"></RadzenPanelMenuItem>
-                    <RadzenPanelMenuItem Text="Images" Path="images" Icon="wallpaper_slideshow"/>
-                    <RadzenPanelMenuItem Text="Networks" Path="networks" Icon="network_node"/>
-                    <RadzenPanelMenuItem Text="Volumes" Path="volumes" Icon="home_storage"/>
+                    <RadzenPanelMenuItem Text="Dashboard" Path="/node/dashboard" Icon="dashboard"/>
+                    <RadzenPanelMenuItem Path="/node/containers" Text="Containers" Icon="deployed_code"></RadzenPanelMenuItem>
+                    <RadzenPanelMenuItem Text="Images" Path="/node/images" Icon="wallpaper_slideshow"/>
+                    <RadzenPanelMenuItem Text="Networks" Path="/node/networks" Icon="network_node"/>
+                    <RadzenPanelMenuItem Text="Volumes" Path="/node/volumes" Icon="home_storage"/>
                 </RadzenPanelMenu>
             </RadzenFieldset>
             <RadzenFieldset Text="Administration">

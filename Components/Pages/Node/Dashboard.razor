@@ -1,0 +1,63 @@
+@page "/node/dashboard"
+@attribute [Authorize]
+<PageTitle>Dashboard</PageTitle>
+<RadzenStack>
+    <RadzenRow>
+        <RadzenColumn SizeMD="3">
+            <RadzenCard>
+                <RadzenRow AlignItems="Radzen.AlignItems.Center">
+                    <RadzenIcon Icon="deployed_code" IconStyle="Radzen.IconStyle.Primary" Style="font-size: 48px"></RadzenIcon>
+                    <RadzenColumn>
+                        <RadzenText Text="Containers" TextStyle="Radzen.Blazor.TextStyle.Overline"/>
+                        <RadzenRow JustifyContent="JustifyContent.SpaceBetween">
+                            <RadzenText Text="@_totalContainers.ToString()" TextStyle="Radzen.Blazor.TextStyle.DisplayH5" class="rz-mb-0"/>
+                            <RadzenButton Text="Explore" Size="ButtonSize.Small" Shade="Shade.Lighter"></RadzenButton>
+                        </RadzenRow>
+                    </RadzenColumn>
+                </RadzenRow>
+            </RadzenCard>
+        </RadzenColumn>
+        <RadzenColumn SizeMD="3">
+            <RadzenCard>
+                <RadzenRow AlignItems="Radzen.AlignItems.Center">
+                    <RadzenIcon Icon="wallpaper_slideshow" IconStyle="Radzen.IconStyle.Primary" Style="font-size: 48px"></RadzenIcon>
+                    <RadzenColumn>
+                        <RadzenText Text="Images" TextStyle="Radzen.Blazor.TextStyle.Overline"/>
+                        <RadzenRow JustifyContent="JustifyContent.SpaceBetween">
+                            <RadzenText Text="@_totalImages.ToString()" TextStyle="Radzen.Blazor.TextStyle.DisplayH5" class="rz-mb-0"/>
+                            <RadzenButton Text="Explore" Size="ButtonSize.Small" Shade="Shade.Lighter"></RadzenButton>
+                        </RadzenRow>
+                    </RadzenColumn>
+                </RadzenRow>
+            </RadzenCard>
+        </RadzenColumn>
+        <RadzenColumn SizeMD="3">
+            <RadzenCard>
+                <RadzenRow AlignItems="Radzen.AlignItems.Center">
+                    <RadzenIcon Icon="network_node" IconStyle="Radzen.IconStyle.Primary" Style="font-size: 48px"></RadzenIcon>
+                    <RadzenColumn>
+                        <RadzenText Text="Networks" TextStyle="Radzen.Blazor.TextStyle.Overline"/>
+                        <RadzenRow JustifyContent="JustifyContent.SpaceBetween">
+                            <RadzenText Text="@_totalNetworks.ToString()" class="rz-mb-0" TextStyle="Radzen.Blazor.TextStyle.DisplayH5"/>
+                            <RadzenButton Text="Explore" Size="ButtonSize.Small" Shade="Shade.Lighter"></RadzenButton>
+                        </RadzenRow>
+                    </RadzenColumn>
+                </RadzenRow>
+            </RadzenCard>
+        </RadzenColumn>
+        <RadzenColumn SizeMD="3">
+            <RadzenCard>
+                <RadzenRow AlignItems="Radzen.AlignItems.Center">
+                    <RadzenIcon Icon="home_storage" IconStyle="Radzen.IconStyle.Primary" Style="font-size: 48px"></RadzenIcon>
+                    <RadzenColumn>
+                        <RadzenText Text="Volumes" TextStyle="Radzen.Blazor.TextStyle.Overline"/>
+                        <RadzenRow JustifyContent="JustifyContent.SpaceBetween">
+                            <RadzenText Text="@_totalVolumes.ToString()" TextStyle="Radzen.Blazor.TextStyle.DisplayH5" class="rz-mb-0"/>
+                            <RadzenButton Text="Explore" Size="ButtonSize.Small" Shade="Shade.Lighter"></RadzenButton>
+                        </RadzenRow>
+                    </RadzenColumn>
+                </RadzenRow>
+            </RadzenCard>
+        </RadzenColumn>
+    </RadzenRow>
+</RadzenStack>

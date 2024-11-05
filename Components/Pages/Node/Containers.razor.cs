@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Radzen;
 
-namespace ContainerManagement.Components.Pages;
+namespace ContainerManagement.Components.Pages.Node;
 
 public partial class Containers
 {
