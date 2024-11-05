@@ -3,7 +3,7 @@ name: Release to Docker Hub
 on:
   push:
     branches:
-      - main
+      - release
 
 jobs:
   build-and-push:
